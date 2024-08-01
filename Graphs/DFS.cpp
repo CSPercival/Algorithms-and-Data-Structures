@@ -8,7 +8,7 @@ struct DFS{
     DFS(int in_n, vector<vector<int>>& in_G){
         n = in_n;
         G = in_G;
-        vis.resize(n);
+        vis.resize(n + 1);
     }
 
     void traverse(int v){
