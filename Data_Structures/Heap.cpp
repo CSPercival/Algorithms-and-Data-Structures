@@ -8,6 +8,10 @@ struct Heap{
         H.resize(1,-1);
     }
 
+    Heap(vector<int>& in_H){
+        build(in_H);
+    }
+
     void insert(int key){
         H.push_back(key);
         s++;
@@ -28,7 +32,9 @@ struct Heap{
     }
 
     void build(vector<int>& in_H){
-        H = in_H;
+        H.resize(in_H.size() + 1);
+        H[0] = -1;
+        for(int i = 0; i < in_H.size(); i++) H[i + 1] = in_H[i];
         s = H.size() - 1;
         for(int i = s/2; i > 0; i--)
             move_down(i);
