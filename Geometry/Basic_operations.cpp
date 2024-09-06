@@ -14,6 +14,12 @@ struct Point{
 
 struct Line{
     ld A,B,C;
+    Line(ld a,ld b,ld c){A = a; B = b; C = c;}
+    Line(Point p1, Point p2){
+        A = p1.y - p2.y;
+        B = p2.x - p1.x;
+        C = -A * p1.x - B * p1.y;
+    }
     void print(){cout << "[Line: " << A << " " << B << " " << C << "]\n";}
 };
 
@@ -30,7 +36,7 @@ struct BGeo{
 
     pair<Point,Point> intersection(Circle C, Line L){ return intersection(L,C);}
     pair<Point,Point> intersection(Line L, Circle C){
-        Line tL= {L.A,L.B,L.C + C.c.x * L.A + C.c.y * L.B};
+        Line tL(L.A,L.B,L.C + C.c.x * L.A + C.c.y * L.B);
         Point v1 = {tL.B * -1, tL.A};
         v1 = v1 / len(v1);
 
@@ -70,7 +76,7 @@ struct BGeo{
     }
 };
 
-int main(){W
+int main(){
     BGeo algos;
     Point p1 = {2.5, -1.0};
     Point p2 = {-3.0, -2.0};
@@ -79,10 +85,10 @@ int main(){W
 
     Point p4,p5;
     Circle c1 = {-3,2,2};
-    Line l1 = {4,5,7};
+    Line l1(4,5,7);
     p4 = algos.intersection(c1,l1).first;
     p5 = algos.intersection(c1,l1).second;
     cout << p4.x << " " << p4.y << " " << p5.x << " " << p5.y << endl;
-    Point p6 = algos.arc_partition(c1,p5,p4,4);
+    Point p6 = algos.arc_near_third(c1,p5,p4);
     p6.print();
 }
