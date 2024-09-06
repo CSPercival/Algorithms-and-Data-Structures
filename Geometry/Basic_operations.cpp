@@ -41,6 +41,8 @@ struct BGeo{
     }
 
     Point arc_mid(Circle C, Point A, Point B){
+        // if AB forms diameter it will cause error
+        // Do not know what happens if arc AB takes more than half of a circle
         A = A - C.c;
         B = B - C.c;
         Point part_of_segment = A + (B - A)/2;
