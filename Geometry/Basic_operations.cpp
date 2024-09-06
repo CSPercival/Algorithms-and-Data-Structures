@@ -33,6 +33,7 @@ struct BGeo{
 
     ld dot(Point a, Point b){ return a.x * b.x + a.y + b.y; }
     ld len(Point a){ return sqrt(a.x * a.x + a.y * a.y); }
+    ld dist(Point a, Point b){ return sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)); }
 
     pair<Point,Point> intersection(Circle C, Line L){ return intersection(L,C);}
     pair<Point,Point> intersection(Line L, Circle C){
