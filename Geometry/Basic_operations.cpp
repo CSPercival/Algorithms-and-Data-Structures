@@ -1,4 +1,6 @@
 #include<bits/stdc++.h>
+#define st first
+#define nd second
 using namespace std;
 typedef long double ld;
 
@@ -8,6 +10,8 @@ struct Point{
     Point operator-(const Point& a){ return {x - a.x, y - a.y}; }
     Point operator*(const ld d){ return {x * d, y * d}; }
     Point operator/(const ld d){ return {x / d, y / d}; }
+    bool operator==(const Point& a){ return ((x == a.x) && (y == a.y));}
+    bool operator!=(const Point& a){ return ((x != a.x) || (y != a.y));}
 
     void print(){cout << "[Point: " << x << " " << y << "]\n";}
 };
@@ -18,8 +22,9 @@ struct Line{
     Line(Point p1, Point p2){
         A = p1.y - p2.y;
         B = p2.x - p1.x;
-        C = -A * p1.x - B * p1.y;
+        C = ((-1) * A * p1.x) - (B * p1.y);
     }
+    void move(Point v){ C -= (v.x * A) + (v.y * B); }
     void print(){cout << "[Line: " << A << " " << B << " " << C << "]\n";}
 };
 
@@ -31,49 +36,47 @@ struct Circle{
 
 struct BGeo{
 
-    ld dot(Point a, Point b){ return a.x * b.x + a.y + b.y; }
-    ld len(Point a){ return sqrt(a.x * a.x + a.y * a.y); }
-    ld dist(Point a, Point b){ return sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)); }
+    ld dot(Point a, Point b){ return (a.x * b.x) + (a.y * b.y); }
+    ld cross(Point a, Point b){ return (a.x * b.y) - (a.y * b.x); }
+    ld len(Point a){ return sqrtl((a.x * a.x) + (a.y * a.y)); }
+    ld dist2(Point a, Point b){ return len(a - b); }
+    ld norm(Point a){ return dot(a,a); }
+    bool clockwise(Point a, Point b, Point c){ return (cross(b - a, c - b) < 0);}
+
+    Point projection(Point A, Circle C){ return projection(C,A);}
+    Point projection(Circle C, Point A){
+        Point tA = A - C.c;
+        return (tA * C.r) / len(tA) + C.c;
+    }
 
     pair<Point,Point> intersection(Circle C, Line L){ return intersection(L,C);}
     pair<Point,Point> intersection(Line L, Circle C){
-        Line tL(L.A,L.B,L.C + C.c.x * L.A + C.c.y * L.B);
-        Point v1 = {tL.B * -1, tL.A};
+        Line tL = L; tL.move(C.c * -1);
+
+        Point v1 = {tL.B * (-1), tL.A};
         v1 = v1 / len(v1);
 
-        Point proj = {(-1 * tL.C * tL.A) / (tL.A * tL.A + tL.B * tL.B), (-1 * tL.C * tL.B) / (tL.A * tL.A + tL.B * tL.B)};
-        // proj.print();
-        ld h = sqrt(C.r * C.r - proj.x * proj.x - proj.y * proj.y);
-        return {proj + v1 * h + C.c, proj + v1 * -h + C.c};
+        Point proj = {((-1)* tL.C * tL.A) / ((tL.A * tL.A) + (tL.B * tL.B)), ((-1) * tL.C * tL.B) / ((tL.A * tL.A) + (tL.B * tL.B))};
+        ld h = sqrtl((C.r * C.r) - dot(proj,proj));
+        return {proj + (v1 * h) + C.c, proj - (v1 * h) + C.c};
+    }
+
+    pair<Point,Point> intersection(Circle C1, Circle C2){
+        Circle tC1 = {0,0,C1.r};
+        Circle tC2 = {C2.c - C1.c, C2.r};
+        Line l1((-2) * tC2.c.x, (-2) * tC2.c.y, (tC2.c.x * tC2.c.x) + (tC2.c.y * tC2.c.y) + (tC1.r * tC1.r) - (tC2.r * tC2.r));
+        pair<Point,Point> ans = intersection(tC1,l1);
+        return {ans.st + C1.c, ans.nd + C1.c};
     }
 
     Point arc_mid(Circle C, Point A, Point B){
-        // if AB forms diameter it will cause error
-        // Do not know what happens if arc AB takes more than half of a circle
-        A = A - C.c;
-        B = B - C.c;
-        Point part_of_segment = A + (B - A)/2;
-        Point proj = part_of_segment * (C.r / len(part_of_segment));
-        return proj + C.c;
+        // assert(abs(dist2(A,B) - (2 * C.r)) > EPS);
+        return projection(C, (B + A)/2.0);
     }
 
     Point arc_near_third(Circle C, Point A, Point B){
         Point mid = arc_mid(C,A,B);
         return arc_mid(C,arc_mid(C,A,mid),mid);
-    }
-
-    Point arc_partition(Circle C, Point A, Point B, int ratio){
-        // Formula is wrong, need to think of sth else
-        cout << "ARC\n";
-        A = A - C.c;
-        B = B - C.c;
-        A.print();
-        B.print();
-        Point part_of_segment = A + (B - A)/ratio;
-        part_of_segment.print();
-        Point proj = part_of_segment * (C.r / len(part_of_segment));
-        proj.print();
-        return proj + C.c;
     }
 };
 
