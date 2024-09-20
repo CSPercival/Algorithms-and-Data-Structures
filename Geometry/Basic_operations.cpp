@@ -1,3 +1,16 @@
+/*
+#############################################
+#                                           #
+#           Quality Certificate             #
+#                I class                    #
+#                                           #
+#   Tasks:                                  #
+#       - Chicken Dinner                    #
+#           (ICPC Training Camp 2024)       #
+#                                           #
+#############################################
+*/
+
 #include<bits/stdc++.h>
 #define st first
 #define nd second

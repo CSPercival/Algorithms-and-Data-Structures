@@ -1,4 +1,16 @@
 /*
+#############################################
+#                                           #
+#           Quality Certificate             #
+#                I class                    #
+#                                           #
+#   Tasks:                                  #
+#       - Bromance                          #
+#           (ICPC Training Camp 2024)       #
+#                                           #
+#############################################
+*/
+/*
 First biconnected component is always [1]. Need to fix that later
 */
 #include<bits/stdc++.h>

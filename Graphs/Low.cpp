@@ -1,3 +1,16 @@
+/*
+#############################################
+#                                           #
+#           Quality Certificate             #
+#                I class                    #
+#                                           #
+#   Tasks:                                  #
+#       - Bromance                          #
+#           (ICPC Training Camp 2024)       #
+#                                           #
+#############################################
+*/
+
 #include<bits/stdc++.h>
 using namespace std;
 
