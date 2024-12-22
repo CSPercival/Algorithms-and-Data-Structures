@@ -12,7 +12,6 @@
 */
 
 #include<bits/stdc++.h>
-#define BOOST ios_base::sync_with_stdio(0);cin.tie(0)
 using namespace std;
 typedef long long ll;
 
@@ -40,26 +39,4 @@ struct ST_SetSum{
         }
         return ans;
     }
-
 };
-
-int main(){
-    BOOST;
-    int n,m; cin >> n >> m;
-    vector<int> a(n);
-    for(int i = 0; i < n; i++) cin >> a[i];
-
-    ST_SetSum ds(n,a);
-
-    int mode, idx, v, l, r;
-    while(m--){
-        cin >> mode;
-        if(mode&1){
-            cin >> idx >> v;
-            ds.update(idx, v);
-        } else {
-            cin >> l >> r;
-            cout << ds.query(l, r) << "\n";
-        }
-    }
-}
