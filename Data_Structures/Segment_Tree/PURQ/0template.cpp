@@ -53,6 +53,7 @@ struct SegmentTreePURQ{
 };
 
 // SetSum - SegmentTreePURQ<ll,int> ds(n, a, 0LL, [](ll a, ll b){return a + b;}, [](ll a, int b){return (long long)b;});
+// AddSum - SegmentTreePURQ<ll,int> ds(n, tmpv, 0LL, [](ll a, ll b){return a + b;}, [](ll a, int b){return a + b;});
 // SetMin - SegmentTreePURQ<int,int> ds(n, a, INT_MAX, [](int a, int b){return min(a, b);}, [](int a, int b){return b;});
 /* SetNumOfMins - SegmentTreePURQ<pair<int,int>, int> ds(n, a, {INT_MAX, 0}, 
 [](pair<int,int> a, pair<int,int> b){
