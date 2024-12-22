@@ -2,7 +2,7 @@
 #############################################
 #                                           #
 #           Quality Certificate             #
-#                IV class                   #
+#                V class                    #
 #                                           #
 #   Tasks:                                  #
 #       - Segment Tree for the Sum          #
@@ -13,6 +13,8 @@
 #           (Codeforeces EDU course)        #
 #       - Inversions                        #
 #           (Codeforeces EDU course)        #
+#       - Salary Queries                    #
+#           (CSES Problem Set)              #
 #                                           #
 #############################################
 */
