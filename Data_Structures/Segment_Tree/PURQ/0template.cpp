@@ -2,10 +2,12 @@
 #############################################
 #                                           #
 #           Quality Certificate             #
-#                I class                    #
+#                II class                   #
 #                                           #
 #   Tasks:                                  #
 #       - Segment Tree for the Sum          #
+#           (Codeforeces EDU course)        #
+#       - Segment Tree for the Minimum      #
 #           (Codeforeces EDU course)        #
 #                                           #
 #############################################
@@ -49,3 +51,4 @@ struct SegmentTreePURQ{
 };
 
 //SetSum - SegmentTreePURQ<ll,int> ds(n, a, 0LL, [](ll a, ll b){return a + b;}, [](ll a, int b){return (long long)b;});
+//SetMin - SegmentTreePURQ<ll,int> ds(n, a, 0LL, [](ll a, ll b){return a + b;}, [](ll a, int b){return (long long)b;});
