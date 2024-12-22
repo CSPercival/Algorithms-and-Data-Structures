@@ -2,12 +2,14 @@
 #############################################
 #                                           #
 #           Quality Certificate             #
-#                II class                   #
+#                III class                  #
 #                                           #
 #   Tasks:                                  #
 #       - Segment Tree for the Sum          #
 #           (Codeforeces EDU course)        #
 #       - Segment Tree for the Minimum      #
+#           (Codeforeces EDU course)        #
+#       - Number of Minimums on a Segment   #
 #           (Codeforeces EDU course)        #
 #                                           #
 #############################################
@@ -50,5 +52,14 @@ struct SegmentTreePURQ{
     }
 };
 
-//SetSum - SegmentTreePURQ<ll,int> ds(n, a, 0LL, [](ll a, ll b){return a + b;}, [](ll a, int b){return (long long)b;});
-//SetMin - SegmentTreePURQ<int,int> ds(n, a, INT_MAX, [](int a, int b){return min(a, b);}, [](int a, int b){return b;});
+// SetSum - SegmentTreePURQ<ll,int> ds(n, a, 0LL, [](ll a, ll b){return a + b;}, [](ll a, int b){return (long long)b;});
+// SetMin - SegmentTreePURQ<int,int> ds(n, a, INT_MAX, [](int a, int b){return min(a, b);}, [](int a, int b){return b;});
+/* SetNumOfMins - SegmentTreePURQ<pair<int,int>, int> ds(n, a, {INT_MAX, 0}, 
+[](pair<int,int> a, pair<int,int> b){
+    if(a.st == b.st) return make_pair(a.st, a.nd + b.nd);
+    return min(a,b);
+},
+[](pair<int,int> old_v, int new_v){
+    return make_pair(new_v, 1);
+});
+*/
