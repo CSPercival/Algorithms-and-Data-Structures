@@ -2,7 +2,7 @@
 #############################################
 #                                           #
 #           Quality Certificate             #
-#                III class                  #
+#                IV class                   #
 #                                           #
 #   Tasks:                                  #
 #       - Segment Tree for the Sum          #
@@ -10,6 +10,8 @@
 #       - Segment Tree for the Minimum      #
 #           (Codeforeces EDU course)        #
 #       - Number of Minimums on a Segment   #
+#           (Codeforeces EDU course)        #
+#       - Inversions                        #
 #           (Codeforeces EDU course)        #
 #                                           #
 #############################################
