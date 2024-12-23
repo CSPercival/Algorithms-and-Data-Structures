@@ -2,11 +2,13 @@
 #############################################
 #                                           #
 #           Quality Certificate             #
-#                I class                    #
+#                II class                   #
 #                                           #
 #   Tasks:                                  #
 #       - String Matching                   #
 #           (CSES Problem Set)              #
+#       - Z Algorithm                       #
+#           (YOSUPO Library Checker)        #
 #                                           #
 #############################################
 */
