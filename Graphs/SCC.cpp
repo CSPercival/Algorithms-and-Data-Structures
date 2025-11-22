@@ -17,6 +17,7 @@
 using namespace std;
 
 // Everything is 0-indexed
+// rg = reverse graph
 int findSCC(vector<vector<int>> &g, vector<vector<int>> &rg, vector<vector<int>> &SCC, vector<int> &SCCid){
     int n = g.size();
     vector<int> order;
