@@ -90,23 +90,23 @@ int32_t main(){
         cout << ans[i];
     }
     cout << "\n";
-    vector<bitset<M>> base(rank);
-    for(int i = 0; i < m; i++){
-        if(where_ans[i] != -1) continue; 
-        for(int col = 0; col < m; col++){
-            // cout << "deb " << i << ' ' << free_vars[i] << " " << col << "\n";
-            if(col == free_vars[i]){
-                base[i][col] = 1;
-                continue;
-            } 
-            if(where_ans[col] == -1) continue;
-            base[i][col] =  -a[where_ans[col]][free_vars[i]];
-        }
-    }
-    for(int i = 0; i < free_vars.size(); i++){
-        for(int col = 0; col < m; col++){
-            cout << modplus(base[i][col]) << " ";
-        }
-        cout << "\n";
-    }
+    // vector<bitset<M>> base(rank);
+    // for(int i = 0; i < m; i++){
+    //     if(where_ans[i] != -1) continue; 
+    //     for(int col = 0; col < m; col++){
+    //         // cout << "deb " << i << ' ' << free_vars[i] << " " << col << "\n";
+    //         if(col == free_vars[i]){
+    //             base[i][col] = 1;
+    //             continue;
+    //         } 
+    //         if(where_ans[col] == -1) continue;
+    //         base[i][col] =  -a[where_ans[col]][free_vars[i]];
+    //     }
+    // }
+    // for(int i = 0; i < free_vars.size(); i++){
+    //     for(int col = 0; col < m; col++){
+    //         cout << modplus(base[i][col]) << " ";
+    //     }
+    //     cout << "\n";
+    // }
 }
