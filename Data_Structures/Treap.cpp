@@ -108,6 +108,7 @@ void erase(Node *&t, int key){
 //     Node *l, *r; 
 //     split(t, l, r, key);
 //     split(l, l, t, key - 1);
+//     delete t;
 //     merge(t, l, r);
 // }
 
